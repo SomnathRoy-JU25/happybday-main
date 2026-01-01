@@ -1,61 +1,165 @@
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
   font-size: 14px;
-  font-family: sans-serif;
   color: white;
   overflow-x: hidden;
+  min-height: 100vh;
   position: relative;
+  background-color: black;
 }
 
-/* Background image (blurred) */
+/* ---------- BACKGROUND IMAGE ---------- */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url('../img2.png');
+  background-image: url('../diya.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: contain;   /* full image visible */
   filter: blur(3px);
   transform: scale(1.05);
-  z-index: -1;
-  background-color: black;
+  z-index: -2;
 }
 
-/* Dark overlay for readability */
+/* ---------- DARK OVERLAY ---------- */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.4);
   z-index: -1;
+}
+
+/* ---------- LINKS ---------- */
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* ---------- LAYOUT ---------- */
+#main {
+  width: 100%;
+}
+
+#wrap {
+  position: relative;
+  margin: 0 auto;
+  width: min(1100px, 100%);
+  height: auto;
+  padding: 20px;
+}
+
+/* ---------- TEXT AREA ---------- */
+#text {
+  position: absolute;
+  left: 188px;
+  top: 80px;
+  width: 272px;
+  height: auto;
+}
+
+/* ---------- CODE BLOCK ---------- */
+#code {
+  display: none;
+  color: rgb(196, 255, 255);
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 600;
+  margin-top: 70px;
+}
+
+/* ---------- CLOCK ---------- */
+#clock-box {
+  position: absolute;
+  left: 60px;
+  bottom: 30px;
+  font-size: 28px;
+  display: none;
+}
+
+#clock {
+  margin-left: 48px;
+}
+
+#clock .digit {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+/* ---------- CANVAS ---------- */
+#canvas {
+  margin: 0 auto;
+  width: min(1100px, 100%);
+  height: auto;
+}
+
+/* ---------- MESSAGE ---------- */
+#message-box {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-family: monospace;
+  text-align: center;
+  width: 90%;
+}
+
+/* ---------- ERROR ---------- */
+#error {
+  text-align: center;
+  margin-top: 60px;
+  display: none;
+}
+
+/* ---------- UTILITY ---------- */
+.hand {
+  cursor: pointer;
+}
+
+.say {
+  margin-left: 5px;
+}
+
+.space {
+  margin-right: 150px;
 }
 
 /* ---------- MOBILE RESPONSIVE ---------- */
 @media (max-width: 768px) {
 
   body {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   body::before {
-    background-size: cover;  /* better fill on phones */
+    background-size: cover;
     filter: blur(2px);
   }
 
   #wrap {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
+    padding: 10px;
   }
 
   #text {
     position: static;
-    width: 90%;
-    height: auto;
-    margin: 60px auto 0;
+    width: 100%;
     text-align: center;
+    margin-top: 40px;
+  }
+
+  #code {
+    font-size: 16px;
+    margin-top: 30px;
   }
 
   #clock-box {
@@ -65,90 +169,18 @@ body::after {
     font-size: 20px;
   }
 
+  #clock {
+    margin-left: 0;
+  }
+
   #clock .digit {
     font-size: 36px;
   }
 
   #message-box {
     position: static;
+    transform: none;
     margin: 30px auto;
-    text-align: center;
     font-size: 18px;
   }
-}
-
-a {
-  color: white;
-  font-size: 14px;
-}
-#main {
-  width: 100%;
-}
-#wrap {
-  position: relative;
-  margin: 0 auto;
-  width: 1100px;
-  height: 680px;
-  margin-top: 10px;
-}
-#text {
-  width: 272px;
-  height: 560px;
-  left: 188px;
-  top: 80px;
-  position: absolute;
-}
-#code {
-  display: none;
-  color: rgb(196, 255, 255);
-  font-size: 16px;
-  margin-top: 70px;
-  line-height: 25px;
-  font-size: larger;
-  font-weight: bolder;
-}
-#clock-box {
-  position: absolute;
-  left: 60px;
-  top: 550px;
-  font-size: 28px;
-  display: none;
-}
-#clock-box a {
-  font-size: 28px;
-  text-decoration: none;
-}
-#clock {
-  margin-left: 48px;
-}
-#clock .digit {
-  font-size: 64px;
-}
-#canvas {
-  margin: 0 auto;
-  width: 1100px;
-  height: 680px;
-}
-#error {
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 60px;
-  display: none;
-}
-.hand {
-  cursor: pointer;
-}
-.say {
-  margin-left: 5px;
-}
-.space {
-  margin-right: 150px;
-}
-
-#message-box{
-  position: absolute;
-  margin-top:450px;
-  font-size: 25px;
-  font-family: monospace;
-
 }
